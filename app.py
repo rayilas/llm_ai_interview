@@ -29,5 +29,5 @@ def upload_resume():
             file.save(filepath)
             return f"File uploaded successfully: {file.filename}"
         return render_template("upload.html")
-    if __name__=="__main__":
+if __name__ == "__main__":
         app.run(debug=True)
