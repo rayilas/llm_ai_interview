@@ -4,8 +4,8 @@ app = Flask(__name__)
 
 
 #upload folder
-Upload_folder="uploads"
-app.config["Upload_folder"]=Upload_folder
+UPLOAD_FOLDER="uploads"
+app.config["UPLOAD_FOLDER"]=UPLOAD_FOLDER
 
 Allowed_Extensions={"pdf","docx"}
 
@@ -25,9 +25,13 @@ def upload_resume():
         if file.filename=="":
             return "No selected file"
         if file and allowed_file(file.filename):
-            filepath=os.path.join(app.config["Upload_folder"],file.filename)
+            if not os.path.exists(UPLOAD_FOLDER):
+                os.makedirs(UPLOAD_FOLDER)
+            
+            filepath=os.path.join(app.config["UPLOAD_FOLDER"],file.filename)
             file.save(filepath)
             return f"File uploaded successfully: {file.filename}"
-        return render_template("upload.html")
+        return "Invalid file format. Allowed: pdf,docx"
+    return render_template("upload.html")
 if __name__ == "__main__":
         app.run(debug=True)
