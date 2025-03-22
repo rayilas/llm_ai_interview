@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis Result</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Analysis Result</h1>
+        <h2>Extracted Text:</h2>
+        <pre>{{text}}</pre>
+
+        <h2>Extracted Skills:</h2>
+        {% if skills %}
+            <ul>
+                {% for skill in skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No skills found.</p>
+        {% endif %}
+
+        <h2>Extracted Experience:</h2>
+        {% if experience %}
+            <ul>
+                {% for exp in experience %}
+                    <li>{{ exp}}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No experience details found.</p>
+        {% endif %}
+
+        <!--<a href="{{url_for('upload_resume')}}">Upload another resume</a>--> 
+    </div>
+</body>
+</html>

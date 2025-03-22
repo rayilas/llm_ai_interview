@@ -85,7 +85,7 @@ def upload_resume():
 
             return render_template("result.html", text=extracted_text, skills=skills, experience=experience)
 
-        return render_template("upload.html")
+    return render_template("upload.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
